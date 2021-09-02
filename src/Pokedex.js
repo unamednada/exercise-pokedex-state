@@ -8,14 +8,27 @@ class Pokedex extends React.Component {
     this.state = {
       pokemon: 0,
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick
+  handleClick() {
+    if (this.state.pokemon < 8) {
+      this.setState((state) => ({
+        pokemon: state.pokemon + 1,
+      }));
+    } else {
+      this.setState({
+        pokemon: 0,
+      })
+    }
+    
+  }
+
   render() {
       return (
           <div className="pokedex">
             <Pokemon key={this.props.pokemons[this.state.pokemon].id} pokemon={this.props.pokemons[this.state.pokemon]} />
-            <button>Next</button>
+            <button onClick={this.handleClick}>Next</button>
           </div>
       );
   }
