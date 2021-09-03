@@ -34,11 +34,14 @@ class Pokedex extends React.Component {
     })
   }
 
-  handleFilter() {
-    this.setState((state) => {
+  handleFilter(event) {
+
+    const filteredArray = this.props.pokemons.filter((pokemon) => pokemon.type === event.target.innerText);
+
+    this.setState(() => {
       return {
         pokemon: 0,
-        pokemons: this.props.pokemons.filter((pokemon) => pokemon.type === this.state.filter),
+        pokemons: filteredArray,
       }
     })
   }
@@ -48,10 +51,11 @@ class Pokedex extends React.Component {
     return (
       <div className="pokedex">
         <Pokemon pokemon={this.state.pokemons[this.state.pokemon]} />
-        <button onClick={this.handleFilter}>Psychic</button>
-        <button onClick={this.handleClick}>
-          Next
-        </button>
+        <div id="filter-btns">
+          <button onClick={this.handleFilter}>Psychic</button>
+          <button onClick={this.handleFilter}>Fire</button>
+        </div>
+        <button onClick={this.handleClick}>Next</button>
       </div>
     );
   }

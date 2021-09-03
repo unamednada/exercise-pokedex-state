@@ -41,3 +41,14 @@ button:hover {
   cursor: pointer;
   opacity: 1;
 }
+
+#filter-btns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+#filter-btns button {
+  padding: 10%;
+  margin: 2%;
+}
