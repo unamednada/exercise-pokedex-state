@@ -11,10 +11,14 @@ button {
   font-size: 1.5rem;
   font-weight: 700;
   border-radius: 10px;
-  background-color: green;
+  background-color: red;
   color: white;
   margin-top: 4%;
-  opacity: 0.8;
+  opacity: 0.75;
+}
+
+button:disabled {
+  background-color: grey;
 }
 
 button:hover {

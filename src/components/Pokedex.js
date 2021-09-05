@@ -3,12 +3,6 @@ import Pokemon from "./Pokemon";
 import Button from "./Button";
 import "./Pokedex.css";
 
-// Inicializar estado chave filterArray como o this.props.pokemons e modificar o estado com handleFilter
-// Passar o estado como valor do prop pokemon no componente Pokemon
-// usar a função setstate para manipular elementos antes de retornar o objeto state
-// Desestruturar this.props dentro do render
-// A função handlefilter deve zerar o state.pokemon
-
 class Pokedex extends React.Component {
   constructor(props) {
     super(props);
@@ -63,7 +57,7 @@ class Pokedex extends React.Component {
     }, ['All'])
 
     return types.map((type) => {
-      return <Button handleFilter={this.handleFilter} type={type} pokemons={this.props.pokemons} />
+      return <Button key={type} handleFilter={this.handleFilter} type={type} pokemons={this.props.pokemons} />
     })
   }
 
@@ -82,11 +76,8 @@ class Pokedex extends React.Component {
         <Pokemon pokemon={this.state.pokemons[this.state.pokemon]} />
         <div id="filter-btns">
           {this.createButtons()}
-          {/* <Button handleFilter={this.handleFilter} type='All' pokemons={this.state.pokemons} />
-          <button onClick={this.handleFilter}>Psychic</button>
-          <button onClick={this.handleFilter}>Fire</button> */}
         </div>
-        <button onClick={this.handleClick}>Next</button>
+        <button disabled={this.state.pokemons.length === 1 ? true : false} onClick={this.handleClick}>Next</button>
       </div>
     );
   }
