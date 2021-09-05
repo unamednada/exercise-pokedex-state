@@ -1,0 +1,10 @@
+#filter-btns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+#filter-btns button {
+  padding: 1rem;
+  margin: 2%;
+}

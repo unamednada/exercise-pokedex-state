@@ -57,6 +57,16 @@ class Pokedex extends React.Component {
     }
   }
 
+  createButtons() {
+    const types = this.state.pokemons.reduce((acc, cur) => {
+      return acc.includes(cur.type) ? acc : [...acc, cur.type];
+    }, ['All'])
+
+    return types.map((type) => {
+      return <Button handleFilter={this.handleFilter} type={type} pokemons={this.props.pokemons} />
+    })
+  }
+
   componentDidMount() {
     const event = {
       target: {
@@ -71,9 +81,10 @@ class Pokedex extends React.Component {
       <div className="pokedex">
         <Pokemon pokemon={this.state.pokemons[this.state.pokemon]} />
         <div id="filter-btns">
-          <Button handleFilter={this.handleFilter} type='All' pokemons={this.state.pokemons} />
+          {this.createButtons()}
+          {/* <Button handleFilter={this.handleFilter} type='All' pokemons={this.state.pokemons} />
           <button onClick={this.handleFilter}>Psychic</button>
-          <button onClick={this.handleFilter}>Fire</button>
+          <button onClick={this.handleFilter}>Fire</button> */}
         </div>
         <button onClick={this.handleClick}>Next</button>
       </div>
