@@ -1,5 +1,6 @@
 import React from "react";
 import Pokemon from "./Pokemon";
+import Button from "./Button";
 import "./Pokedex.css";
 
 // Inicializar estado chave filterArray como o this.props.pokemons e modificar o estado com handleFilter
@@ -70,7 +71,7 @@ class Pokedex extends React.Component {
       <div className="pokedex">
         <Pokemon pokemon={this.state.pokemons[this.state.pokemon]} />
         <div id="filter-btns">
-          <button onClick={this.handleFilter}>All</button>
+          <Button handleFilter={this.handleFilter} type='All' pokemons={this.state.pokemons} />
           <button onClick={this.handleFilter}>Psychic</button>
           <button onClick={this.handleFilter}>Fire</button>
         </div>
