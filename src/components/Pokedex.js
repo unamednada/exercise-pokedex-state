@@ -1,6 +1,6 @@
 import React from "react";
 import Pokemon from "./Pokemon";
-import './Pokedex.css';
+import "./Pokedex.css";
 
 // Inicializar estado chave filterArray como o this.props.pokemons e modificar o estado com handleFilter
 // Passar o estado como valor do prop pokemon no componente Pokemon
@@ -14,7 +14,6 @@ class Pokedex extends React.Component {
 
     this.state = {
       pokemon: 0,
-      filter: "Psychic",
       pokemons: this.props.pokemons,
     };
 
@@ -27,41 +26,51 @@ class Pokedex extends React.Component {
       if (this.state.pokemon < this.state.pokemons.length - 1) {
         return {
           pokemon: state.pokemon + 1,
-        }
+        };
       }
       return {
         pokemon: 0,
-      }  
-    })
+      };
+    });
   }
 
   handleFilter(event) {
+    if (event.target.innerText !== "All") {
+      const filteredArray = this.props.pokemons.filter(
+        (pokemon) => pokemon.type === event.target.innerText
+      );
 
-    const filteredArray = this.props.pokemons.filter((pokemon) => pokemon.type === event.target.innerText);
-
-    this.setState(() => {
-      return {
-        pokemon: 0,
-        pokemons: filteredArray,
-      }
-    })
+      this.setState(() => {
+        return {
+          pokemon: 0,
+          pokemons: filteredArray,
+        };
+      });
+    } else {
+      this.setState(() => {
+        return {
+          pokemon: 0,
+          pokemons: this.props.pokemons,
+        };
+      });
+    }
   }
 
   componentDidMount() {
     const event = {
       target: {
-        innerText: this.state.filter,
-      }
-    }
+        innerText: 'All',
+      },
+    };
     this.handleFilter(event);
   }
 
   render() {
-
     return (
       <div className="pokedex">
         <Pokemon pokemon={this.state.pokemons[this.state.pokemon]} />
         <div id="filter-btns">
+          <button onClick={this.handleFilter}>All</button>
           <button onClick={this.handleFilter}>Psychic</button>
           <button onClick={this.handleFilter}>Fire</button>
         </div>
