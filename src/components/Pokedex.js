@@ -1,7 +1,11 @@
 import React from "react";
 import Pokemon from "./Pokemon";
 
-
+// Inicializar estado chave filterArray como o this.props.pokemons e modificar o estado com handleFilter
+// Passar o estado como valor do prop pokemon no componente Pokemon
+// usar a função setstate para manipular elementos antes de retornar o objeto state
+// Desestruturar this.props dentro do render
+// A função handlefilter deve zerar o state.pokemon
 
 class Pokedex extends React.Component {
   constructor(props) {
