@@ -1,5 +1,6 @@
 import React from "react";
 import Pokemon from "./Pokemon";
+import './Pokedex.css';
 
 // Inicializar estado chave filterArray como o this.props.pokemons e modificar o estado com handleFilter
 // Passar o estado como valor do prop pokemon no componente Pokemon
