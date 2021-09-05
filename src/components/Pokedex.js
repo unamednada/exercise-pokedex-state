@@ -47,6 +47,15 @@ class Pokedex extends React.Component {
     })
   }
 
+  componentDidMount() {
+    const event = {
+      target: {
+        innerText: this.state.filter,
+      }
+    }
+    this.handleFilter(event);
+  }
+
   render() {
 
     return (
